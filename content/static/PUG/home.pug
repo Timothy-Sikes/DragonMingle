@@ -1,0 +1,29 @@
+extends default
+
+include ./main.pug
+include ./footer.pug
+include ./dyanmicParallax.pug
+include ./dynamicHome.pug
+
+block append head
+    +dyanmicParallax(name, url)
+    +dynamicHome(backgroundImage)
+    meta(property="og:image" content="http://dragonmingle.com/images/DragonMingle.jpg")
+    meta(property="og:image:type" content="image/jpeg")
+    meta(property="og:title" content="DragonMingle.com")
+    meta(property="og:type" content="webpage")
+    meta(property="go:url" content="http://dragonmingle.com")
+    style(type='text/css').
+        #background-inner {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 100vh;
+            vertical-align: top;
+            background-color: rgba(0,0,0,#{backgroundOpacity});
+            z-index: 1;
+        }
+
+append content
+    +main
+    +footer
