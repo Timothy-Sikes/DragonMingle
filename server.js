@@ -24,14 +24,12 @@ const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 
 app.get('*', asyncMiddleware(async function (req, res) {
   pic = { "image": "/images/DragonLair1.jpg", "opacity" : .4 },
-  //pic = "/images/DragonLair1.jpg"
 
   res.send(compiledFunction({
     catchphrase: "Meet single dragons in YOUR local area!",
     message: "A placeholder for something I might do someday maybe.",
     backgroundImage: pic.image,
     backgroundOpacity: pic.opacity || 0,
-    goodreadsCss: getRandomInt(3) + 1
   }))
   })
 )
