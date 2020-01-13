@@ -4,10 +4,12 @@ include ./main.pug
 include ./footer.pug
 include ./dyanmicParallax.pug
 include ./dynamicHome.pug
+include ./description1.pug
 
 block append head
     +dyanmicParallax(name, url)
     +dynamicHome(backgroundImage)
+    +dyanmicParallax(name2, url2)
     meta(property="og:title" content="DragonMingle.com")
     meta(property="og:type" content="webpage")
     meta(property="og:image" content="http://www.dragonmingle.com/images/DragonMingle3.jpg")
@@ -29,4 +31,5 @@ block append head
 
 append content
     +main
+    +description1
     +footer
