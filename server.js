@@ -14,17 +14,17 @@ const asyncMiddleware = fn =>
       .catch(next);
   };
 
-backgroundPaths = [
+const backgroundPaths = [
   { "image": "/images/TimsOKC/WarpDrive.gif" },
   { "image" : "/images/TimsOKC/underground_green.jpg", "opacity" : .4},
   { "image" : "/images/TimsOKC/underground_blue.jpg", "opacity" : .4},
-]
+];
 
 const compiledFunction = pug.compileFile('./content/static/PUG/home.pug');
 
-app.get('*', asyncMiddleware(async function (req, res) {
-  pic = { "image": "/images/DragonLair1.jpg", "opacity" : .4 },
-  pic2 = { "image": "/images/DragonLair2.jpg", "opacity" : .4 },
+app.get('/', asyncMiddleware(async function (req, res) {
+  const pic = { "image": "/images/DragonLair1.jpg", "opacity" : .4 };
+  const pic2 = { "image": "/images/DragonLair2.jpg", "opacity" : .4 };
 
   res.send(compiledFunction({
     catchphrase: "Meet single dragons in YOUR local area!",
@@ -33,8 +33,7 @@ app.get('*', asyncMiddleware(async function (req, res) {
     backgroundOpacity: pic.opacity || 0,
     name2: "description1",
     url2: pic2.image,
-  }))
-  })
-)
+  }));
+}));
 
-app.listen((process.env.PORT || 8000));
+app.listen((process.env.PORT || 8000), '0.0.0.0');
