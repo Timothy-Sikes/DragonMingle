@@ -5,5 +5,8 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
-    network_mode: host
+    network_mode: bridge
+    ports:
+      - "127.0.0.1:8028:8000"
+    restart: unless-stopped
     command: sh -c "npm install && node server.js"
